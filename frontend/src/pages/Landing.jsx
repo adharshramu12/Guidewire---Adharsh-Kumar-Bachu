@@ -119,7 +119,7 @@ export default function Landing() {
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="bg-[#0c1324] text-[#dce2fa] overflow-x-hidden font-body">
+    <div ref={containerRef} className="bg-[#0c1324] text-[#dce2fa] overflow-x-hidden font-body" style={{ backgroundColor: '#0c1324' }}>
       
       {/* Heavy 3D Background - Pinned layer */}
       <div className="hero-3d-container fixed top-0 left-0 w-full h-[120vh] pointer-events-none z-0">

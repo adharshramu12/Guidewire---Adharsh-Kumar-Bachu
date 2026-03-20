@@ -8,52 +8,51 @@ function CoreShield() {
 
   useFrame((state, delta) => {
     if (outerRef.current) {
-      outerRef.current.rotation.y += delta * 0.15;
-      outerRef.current.rotation.x += delta * 0.1;
+      outerRef.current.rotation.y += delta * 0.1;
+      outerRef.current.rotation.x += delta * 0.05;
     }
     if (innerRef.current) {
-      innerRef.current.rotation.y -= delta * 0.2;
+      innerRef.current.rotation.y -= delta * 0.15;
     }
   });
 
   return (
-    <group>
+    <group scale={1.2}>
       {/* Deep inner glowing core */}
-      <Sphere ref={innerRef} args={[1.5, 64, 64]}>
+      <Sphere ref={innerRef} args={[1.2, 32, 32]}>
         <MeshDistortMaterial 
           color="#10b981" 
           emissive="#06b6d4"
-          emissiveIntensity={1.5}
-          distort={0.4} 
-          speed={2} 
-          roughness={0.2}
+          emissiveIntensity={2}
+          distort={0.3} 
+          speed={1.5} 
+          roughness={0}
         />
       </Sphere>
 
-      {/* Outer Glass/Obsidian Shell */}
-      <Icosahedron ref={outerRef} args={[2.4, 2]}>
+      {/* Outer Glass Shell */}
+      <Icosahedron ref={outerRef} args={[2.0, 5]}>
         <meshPhysicalMaterial 
           color="#0c1324"
-          transmission={0.9} // Glass effect
+          transmission={1}
           opacity={1}
-          metalness={0.1}
+          metalness={0}
           roughness={0.05}
-          ior={1.5}
-          thickness={2.5}
-          specularColor="#4edea3"
+          ior={1.2}
+          thickness={0.5}
           specularIntensity={1}
-          envMapIntensity={2}
-          wireframe={false}
+          envMapIntensity={1}
+          transparent
         />
       </Icosahedron>
 
       {/* Kinetic wireframe cage */}
-      <Icosahedron args={[2.7, 1]} rotation={[Math.PI / 4, 0, 0]}>
+      <Icosahedron args={[2.3, 1]} rotation={[Math.PI / 4, 0, 0]}>
         <meshBasicMaterial 
           color="#4cd7f6" 
           wireframe 
           transparent 
-          opacity={0.05} 
+          opacity={0.15} 
         />
       </Icosahedron>
     </group>
@@ -80,7 +79,7 @@ export default function Hero3DScene() {
         <Stars radius={100} depth={50} count={3000} factor={4} saturation={1} fade speed={1} />
 
         {/* HDRI Environment for realistic glass reflections */}
-        <Environment preset="night" />
+        <Environment preset="city" />
       </Canvas>
     </div>
   );
