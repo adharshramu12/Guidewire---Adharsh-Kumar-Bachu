@@ -1,0 +1,19 @@
+{
+  "name": "gigshield-backend",
+  "version": "1.0.0",
+  "description": "GigShield API Server",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^9.3.1",
+    "pg": "^8.13.3",
+    "socket.io": "^4.8.1"
+  }
+}
